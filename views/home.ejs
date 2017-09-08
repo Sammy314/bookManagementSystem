@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+	body{
+		background: url('/images/1.jpg') no-repeat;
+		background-size:100%;
+	}
+</style>
+</head>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<script src="/javascripts/jquery-3.2.1.min.js"></script>
+<body>
+	<h1>欢迎进入神奇书城的后台管理系统</h1>
+	<input type="button" value="评论" onclick="location.href='/comment'" id="comment">
+	<input type="button" value="注销" onclick="location.href='/logout'" id="logout">
+	<div class="H_left">
+		<ul id="list">
+			<li title="add">数据添加</li>
+			<li title="remove">数据删除</li>
+			<li title="look">数据修改</li>
+			<!-- <li title="search">数据查询</li> -->
+			<li title="search" location.href ='/list'>数据查询</li>
+		</ul>
+	</div>
+
+  	<div class="H_right">
+	    <ul id="view">
+	        <li>
+	            <form method="post" action="./users/addbooks">
+	            	<p>请添加书本信息</p>
+					<label for="booksname">
+						<p>书名：<input type="text" name="booksname" /></p>
+					</label><br />
+					<label for="author">
+						<p>作者：<input type="text" name="author" /></p>
+					</label><br />
+					<label for="price">
+						<p>价格：<input type="number" name="price" /></p>
+					</label><br />
+					<label for="kucun">
+						<p>库存：<input type="number" name="kucun" /></p>
+					</label><br />
+					<label for="xiaoliang">
+						<p>销量：<input type="number" name="xiaoliang" /></p>
+					</label><br />
+					<label for="discount">
+						<p>折扣：<input type="text" name="discount" /></p>
+					</label><br />
+					<label for="intro">
+						<p>简介：<input type="text" name="intro" /></p>
+					</label><br />
+					<input type="submit" id="submit" value="确认添加" />
+				</form>
+	        </li>
+	        
+	        <li>
+	            <form action="./users/remove" method="post">
+					<u>请输入要删除的书本名称</u>
+					<p>书名：<input type="text" name="booksname" /></p>
+					<input type="submit" value="删除" />
+				</form>
+			</li>
+	        <li>
+	            <form method="post" action="./users/update">
+	            	<p>修改书本信息</p>
+					<label for="booksname">
+						<p>书名：<input type="text" name="booksname" /></p>
+					</label><br />
+					<label for="author">
+						<p>作者：<input type="text" name="author" /></p>
+					</label><br />
+					<label for="price">
+						<p>价格：<input type="number" name="price" /></p>
+					</label><br />
+					<label for="kucun">
+						<p>库存：<input type="number" name="kucun" /></p>
+					</label><br />
+					<label for="xiaoliang">
+						<p>销量：<input type="number" name="xiaoliang" /></p>
+					</label><br />
+					<label for="discount">
+						<p>折扣：<input type="text" name="discount" /></p>
+					</label><br />
+					<label for="intro">
+						<p>简介：<input type="text" name="intro" /></p>
+					</label><br />
+					<input type="submit" id="submit" value="确认修改" />
+				</form>
+	        </li>
+	        <li>
+	        	<!-- <form method="post" action="./users/search">
+	        		<input type="submit" value="数据查询" />
+	        	</form> -->
+	        	<div class="list">
+					<h1 class="H_1">书籍概览</h1>
+
+					<table>
+						<tr class="biaoti">
+				            <td>书名</td>
+				            <td>作者</td>
+				            <td>价格</td>
+				            <td>库存</td>
+				            <td>销量</td>
+				            <td>折扣</td>
+				            <td>简介</td>
+				            <td>操作</td>
+					    </tr>
+						<% for(var i in data){ %>
+					        <tr class="neir">
+					            <td><%- data[i].booksname %></td>
+					            <td><%- data[i].author %></td>
+					            <td><%- data[i].price %></td>
+					            <td><%- data[i].kucun %></td>
+					            <td><%- data[i].xiaoliang %></td>
+					            <td><%- data[i].discount %></td>
+					            <td><%- data[i].intro %></td>
+					            <td>
+					            	<!-- <form action="./users/remove" method="post"> -->
+					            		<input type="submit" value="删除" />
+					            		<input type="submit" value="修改" onclick="location.href='/users/update'" />
+					            	<!-- </form> -->
+					            </td>
+					        </tr>
+					    <% } %>
+					</table>
+					</div>
+	        </li>
+	    </ul>
+	</div>
+</body>
+<script>
+
+	// $('#view li').eq(0).show();
+	$('#list li').click(function(){
+	    var index=$(this).index();
+	    $('#list li').css({'background':'skyblue'})
+	    $(this).css({'background':'#fff'})
+	    $('#view li').eq(index).show().siblings().hide();
+	    $('#list').css({'display':'block'})
+	})
+	$('#list li').mouseover(function(){
+		$(this).css({'background':'#fff'})
+	})
+	$('#list li').mouseout(function(){
+		$(this).css({'background':'skyblue'})
+	})
+	// $('#list').mouseout(function(){
+	// 	$(this).css({'display':'none'})
+	// })
+	// $('#list').mouseover(function(){
+	// 	$(this).css({'display':'block'})
+	// })
+	$('h1').mouseover(function(){
+		$('#list').css({
+			'display':'block'
+		})
+	})
+</script>
+</html>

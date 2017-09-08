@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style>
+	#C_table{
+		width: 100%;
+		text-align: center;
+		/*background:skyblue;*/
+	}
+	input{
+		position:absolute;
+		right: 20px;
+		/*bottom: 0;*/
+		width: 70px;
+		height: 30px;
+		cursor: pointer;
+	}
+	b{
+		visibility: hidden;
+	}
+	body{
+		background: url('/images/1.jpg') no-repeat;
+		background-size:cover;
+	}
+	img{
+		width: 200px;
+		height: 100px;
+	}
+</style>
+</head>
+<body>
+	<table border="1" cellspacing="0" cellpadding="0" id="C_table">
+		<tr style="color: #fff;font-size: 20px;">
+			<th>序<b>序</b>号</th>
+			<th>标<b>序</b>题</th>
+			<th>内<b>序</b>容</th>
+		</tr>
+		<% res.forEach(function(item,index){ %>
+			<tr style="height:40px;">
+				<td><%- (index+1) %></td>
+				<td><a href="./datail?uid= <%= item.uid %>" style='font-size:16px;color: #fff;'><%- item.title %></a></td>
+				<td><%- item.content %></td>
+			</tr>
+		<%})%>
+
+		<tr>
+			<td colspan="3">
+				<a href="./com_list?pageNo=1">首页</a>
+				<a href="./com_list?pageNo= <%= pageNo > 1? parseInt(pageNo)-1 :1 %>">上一页</a>
+				<a href="./com_list?pageNo= <%= pageNo < totalPage ? parseInt(pageNo)+1 :totalPage %>">下一页</a>
+				<a href="./com_list?pageNo= <%= totalPage %> ">尾页</a>
+				<%= pageNo %>/<%= totalPage %>
+				<%= count %>
+			</td>
+		</tr>
+	</table>
+	<input type="submit" value="返回首页" onclick="location.href='/home'">
+</body>
+</html>

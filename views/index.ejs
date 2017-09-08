@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+<style type="text/css">
+	body{
+		background: url('/images/1.jpg') no-repeat;
+		background-size:100%;
+	}
+</style>
+</head>
+<body>
+	<% if(!username){%>
+		<div class="I_top">
+			<p>欢迎来到神奇书城，太多美好的事物等着你来发掘！</p>
+			<p>什么？还没注册？快来<a onclick="location.href='/register'">注册</a>跟我品味书香吧</p>
+			<p>朋友,请先<a onclick="location.href='/login'">登录</a>一下，马上体验图书之旅哦</p>
+		</div>
+	<% }else{ %>
+		<div class="I_main">
+			<p>欢迎您的到来!用户<a location.href='/xiangqing'><%= username %></a></p>
+			<input type="button" value="注销" onclick="location.href='/logout'">
+			<input type="button" value="评论" onclick="location.href='/comment'">
+		</div>
+	<%}%>
+	
+</body>
+</html>

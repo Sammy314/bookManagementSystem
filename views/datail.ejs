@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+	body{
+		background: url('/images/1.jpg') no-repeat;
+		background-size:cover;
+	}
+	table{
+		width: 100%;
+		text-align: center;
+		/*background:skyblue;*/
+	}
+</style>
+</head>
+<body>
+<table border="1" cellspacing="0" cellpadding="0">
+	<tr style="color: #fff;font-size: 20px;">
+		<td>ID号</td>
+		<td>用户名</td>
+		<td>标题</td>
+		<td>评论内容</td>
+	</tr>
+	<tr>
+		<td><%- item.uid %></td>
+		<td><%- item.username %></td>
+		<td><%- item.title %></td>
+		<td><%- item.content %></td>
+	</tr>
+</table>
+</body>
+</html>

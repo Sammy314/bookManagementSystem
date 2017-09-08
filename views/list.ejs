@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<script src="/javascripts/jquery-3.2.1.min.js"></script>
+<body>
+<div class="list">
+	<h1 class="H_1">书籍概览</h1>
+
+	<table>
+		<tr class="biaoti">
+            <td>书名</td>
+            <td>作者</td>
+            <td>价格</td>
+            <td>库存</td>
+            <td>销量</td>
+            <td>折扣</td>
+            <td>简介</td>
+            <!-- <th>删除</th> -->
+	    </tr>
+		<% for(var i in data){ %>
+	        <tr class="neir">
+	            <td><%- data[i].booksname %></td>
+	            <td><%- data[i].author %></td>
+	            <td><%- data[i].price %></td>
+	            <td><%- data[i].kucun %></td>
+	            <td><%- data[i].xiaoliang %></td>
+	            <td><%- data[i].discount %></td>
+	            <td><%- data[i].intro %></td>
+	            <!-- <td><input type="submit" value="删除此书" /></td> -->
+	        </tr>
+	    <% } %>
+	</table>
+	<input type="button" value="回到首页" onclick="location.href='/home'" />
+	</div>
+</body>
+</html>
